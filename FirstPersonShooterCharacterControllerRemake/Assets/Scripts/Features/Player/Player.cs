@@ -1,15 +1,32 @@
 ﻿using CM.Essentials;
 using UnityEngine;
 
-public class Player : Entity, IMovement2D
+public class Player : Entity, IMovement2D, IRotate
 {
+	private IMovement2D[] _movementModules;
+	private IRotate[] _rotateModules;
+
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+
+		_movementModules = GetModules<IMovement2D>();
+		_rotateModules = GetModules<IRotate>();
+	}
+
 	public void Move(Vector2 input)
 	{
-		IMovement2D[] modules = GetModules<IMovement2D>();
-
-		foreach (IMovement2D module in modules)
+		foreach (IMovement2D module in _movementModules)
 		{
 			module.Move(input);
+		}
+	}
+
+	public void Rotate(Vector3 input)
+	{
+		foreach (IRotate module in _rotateModules)
+		{
+			module.Rotate(input);
 		}
 	}
 }
