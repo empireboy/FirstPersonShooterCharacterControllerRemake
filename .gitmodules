@@ -1,3 +1,6 @@
 [submodule "FirstPersonShooterCharacterControllerRemake/Assets/Plugins/CM-Unity-Package"]
 	path = FirstPersonShooterCharacterControllerRemake/Assets/Plugins/CM-Unity-Package
 	url = https://github.com/empireboy/CM-Unity-Package
+[submodule "Assets/Plugins/CM-Unity-Package"]
+	path = Assets/Plugins/CM-Unity-Package
+	url = https://github.com/empireboy/CM-Unity-Package
