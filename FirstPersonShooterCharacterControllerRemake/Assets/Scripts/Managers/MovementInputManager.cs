@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using CM.Essentials;
+using CM.Orientation;
 using UnityEngine;
 
-public class MovementInputManager : MonoBehaviour
+public class MovementInputManager : Manager<IMovement2D>
 {
-	private List<IMovement2D> _movementInterfaces = new List<IMovement2D>();
-
 	private Vector2 _input;
 
 	private void Awake()
 	{
-		_movementInterfaces.Add(GameObject.Find("Player").GetComponent<IMovement2D>());
+		interfaces.Add(GameObject.Find("Player").GetComponent<IMovement2D>());
 	}
 
 	private void Update()
@@ -22,9 +21,9 @@ public class MovementInputManager : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		for (int i = 0; i < _movementInterfaces.Count; i++)
+		for (int i = 0; i < interfaces.Count; i++)
 		{
-			_movementInterfaces[i].Move(_input);
+			interfaces[i].Move(_input);
 		}
 	}
 }
