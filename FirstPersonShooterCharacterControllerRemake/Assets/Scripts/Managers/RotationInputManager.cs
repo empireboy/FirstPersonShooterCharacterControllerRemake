@@ -1,11 +1,9 @@
-﻿using CM.Orientation;
-using System.Collections.Generic;
+﻿using CM.Essentials;
+using CM.Orientation;
 using UnityEngine;
 
-public class RotationInputManager : MonoBehaviour
+public class RotationInputManager : Manager<IRotate>
 {
-	private List<IRotate> _rotateInterfaces = new List<IRotate>();
-
 	private Vector3 _input;
 
 	[SerializeField]
@@ -13,7 +11,7 @@ public class RotationInputManager : MonoBehaviour
 
 	private void Awake()
 	{
-		_rotateInterfaces.Add(GameObject.Find("Player").GetComponent<IRotate>());
+		interfaces.Add(GameObject.Find("Player").GetComponent<IRotate>());
 	}
 
 	private void Start()
@@ -32,9 +30,9 @@ public class RotationInputManager : MonoBehaviour
 		);
 
 		// Set rotation
-		for (int i = 0; i < _rotateInterfaces.Count; i++)
+		for (int i = 0; i < interfaces.Count; i++)
 		{
-			_rotateInterfaces[i].Rotate(_input);
+			interfaces[i].Rotate(_input);
 		}
 	}
 }
