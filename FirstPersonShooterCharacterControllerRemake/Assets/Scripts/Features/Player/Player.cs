@@ -1,4 +1,5 @@
 ﻿using CM.Essentials;
+using CM.Orientation;
 using UnityEngine;
 
 public class Player : Entity, IMovement2D, IRotate

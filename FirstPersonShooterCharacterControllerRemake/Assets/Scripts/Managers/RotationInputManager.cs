@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CM.Orientation;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RotationInputManager : MonoBehaviour
