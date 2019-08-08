@@ -22,7 +22,7 @@ public class PlayerSpawner : Spawner
 
 		Player player = instantiatedObject.GetComponent<Player>();
 
-		_movementManager.GetComponent<Manager<IMovement2D>>().interfaces.Add(player);
-		_rotationManager.GetComponent<Manager<IRotate>>().interfaces.Add(player);
+		_movementManager.GetComponent<Manager<IMovement2D>>().AddInterface(player);
+		_rotationManager.GetComponent<Manager<IRotate>>().AddInterface(player);
 	}
 }
