@@ -6,11 +6,6 @@ public class MovementInputManager : Manager<IMovement2D>
 {
 	private Vector2 _input;
 
-	private void Awake()
-	{
-		interfaces.Add(GameObject.Find("Player").GetComponent<IMovement2D>());
-	}
-
 	private void Update()
 	{
 		_input.Set(
