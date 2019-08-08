@@ -9,11 +9,6 @@ public class RotationInputManager : Manager<IRotate>
 	[SerializeField]
 	private Vector2 _sensitivity;
 
-	private void Awake()
-	{
-		interfaces.Add(GameObject.Find("Player").GetComponent<IRotate>());
-	}
-
 	private void Start()
 	{
 		Cursor.lockState = CursorLockMode.Locked;
