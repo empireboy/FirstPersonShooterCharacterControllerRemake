@@ -41,4 +41,10 @@ public class Player : Entity, IMovement2D, IRotate, ISpawning
 			module.Spawn();
 		}
 	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.R))
+			Spawn();
+	}
 }
