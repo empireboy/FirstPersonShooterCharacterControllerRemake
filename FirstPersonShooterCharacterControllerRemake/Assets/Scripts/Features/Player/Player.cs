@@ -1,11 +1,13 @@
 ﻿using CM.Essentials;
 using CM.Orientation;
+using CM.Spawner;
 using UnityEngine;
 
-public class Player : Entity, IMovement2D, IRotate
+public class Player : Entity, IMovement2D, IRotate, ISpawning
 {
 	private IMovement2D[] _movementModules;
 	private IRotate[] _rotateModules;
+	private ISpawning[] _spawningModules;
 
 	protected override void OnAwake()
 	{
@@ -13,6 +15,7 @@ public class Player : Entity, IMovement2D, IRotate
 
 		_movementModules = GetModules<IMovement2D>();
 		_rotateModules = GetModules<IRotate>();
+		_spawningModules = GetModules<ISpawning>();
 	}
 
 	public void Move(Vector2 input)
@@ -28,6 +31,14 @@ public class Player : Entity, IMovement2D, IRotate
 		foreach (IRotate module in _rotateModules)
 		{
 			module.Rotate(input);
+		}
+	}
+
+	public void Spawn()
+	{
+		foreach (ISpawning module in _spawningModules)
+		{
+			module.Spawn();
 		}
 	}
 }
