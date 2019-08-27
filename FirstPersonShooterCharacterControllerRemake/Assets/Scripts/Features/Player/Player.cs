@@ -42,6 +42,14 @@ public class Player : Entity, IMovement2D, IRotate, ISpawning
 		}
 	}
 
+	public void SetSpawn(Transform spawnPoint)
+	{
+		foreach (ISpawning module in _spawningModules)
+		{
+			module.SetSpawn(spawnPoint);
+		}
+	}
+
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.R))
