@@ -1,10 +1,17 @@
 ﻿using CM.Essentials;
 using CM.Orientation;
-using CM.Spawner;
 using UnityEngine;
 
-public class PlayerSpawner : Spawner
+public class PlayerSpawnTestManager : MonoBehaviour
 {
+	[SerializeField]
+	private Transform _spawnPoint;
+
+	[SerializeField]
+	private Player _playerPrefab;
+
+	[Header("Managers")]
+
 	[SerializeField]
 	private GameObject _movementManager;
 
@@ -13,14 +20,9 @@ public class PlayerSpawner : Spawner
 
 	private void Start()
 	{
-		Spawn();
-	}
-
-	protected override void OnSpawn(GameObject instantiatedObject)
-	{
-		base.OnSpawn(instantiatedObject);
-
-		Player player = instantiatedObject.GetComponent<Player>();
+		Player player = Instantiate(_playerPrefab);
+		player.SetSpawn(_spawnPoint);
+		player.Spawn();
 
 		_movementManager.GetComponent<Manager<IMovement2D>>().AddInterface(player);
 		_rotationManager.GetComponent<Manager<IRotate>>().AddInterface(player);
